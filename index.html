@@ -1,132 +1,132 @@
-﻿<!-- 
-Author: 武侠
-Edited: Vy Nghia
--->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>My Lonely Life</title>
-	<link rel="SHORTCUT ICON" href="https://duyphuc-it.github.io/favicon.ico">
-	<!-- Import Font -->
-	<style type="text/css">
-		@font-face {
-			font-family: digit;
-			src: url('digital-7_mono.ttf') format("truetype");
-		}
-	</style>
-	<!-- Default CSS -->
-	<link href="./lib/default.css" type="text/css" rel="stylesheet">
-	
-	<!-- Script Lib -->
-	<script type="text/javascript" src="./lib/jquery.js"></script>
-	<script type="text/javascript" src="./lib/garden.js"></script>
-	
-	<!-- Font -->
-	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-</head>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <title>Đếm ngược đến Tết Nguyên Đán 2019</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="description" content="Còn bao nhiêu ngày nữa đến Tết Nguyên Đán Kỷ Hợi 2019?"/>
+        <meta property="og:title" content="Đếm ngược đến Tết"/>
+        <meta property="og:description" content="Còn bao nhiêu ngày nữa đến Tết Nguyên Đán Kỷ Hợi 2019?"/>
+        <meta property="og:url" content="duyphuc-it.github.com"/>
+        <meta property="og:site_name" content="Sắp Tết"/>
+        <meta property="og:image" content="saptet.com.png"/>
+        <link rel="SHORTCUT ICON" href="favicon.ico">
+        <script src='jquery-3.2.1.min.js'></script>
+        <script src="js.js"></script>
+        <script type="text/javascript">
+            document.write('<style>body{padding-bottom: 20px}#e_itexpress_left {display: none;position: fixed;z-index: 9999;top: 0;left: 0}#e_itexpress_right {display: none;position: fixed;z-index: 9999;top: 0;right: 0}#e_itexpress_footer {display: none;position: fixed;z-index: 9999;bottom: -50px;left: 0;width: 100%;height: 104px;background: url(https://itexpress.vn/images/noel/ft.png) repeat-x bottom left}#e_itexpress_bottom_left {display: none;position: fixed;z-index: 9999;bottom: 20px;left: 20px}@media (min-width: 992px) {#e_itexpress_left,#e_itexpress_right,#e_itexpress_footer,#e_itexpress_bottom_left {display: block}}</style><img id="e_itexpress_left" src="topleft.png" /><img id="e_itexpress_right" src="topright.png" /><div id="e_itexpress_footer"></div><img id="e_itexpress_bottom_left" src="bottomleft.png" /><div style="position:fixed;z-index:9999;bottom:3px;right:3px; font-size:12px;color:#8D8D8D;">Duy Phúc</div>');
+            var no = 100;   
+            var hidesnowtime = 0;
+            var snowdistance = 'pageheight';
+            var ie4up = (document.all) ? 1 : 0;
+            var ns6up = (document.getElementById && !document.all) ? 1 : 0;
+        
+            function iecompattest() {
+                return (document.compatMode && document.compatMode != 'BackCompat') ? document.documentElement : document.body
+            }
+            var dx, xp, yp;
+            var am, stx, sty;
+            var i, doc_width = 800,
+                doc_height = 600;
+            if (ns6up) {
+                doc_width = self.innerWidth;
+                doc_height = self.innerHeight
+            } else if (ie4up) {
+                doc_width = iecompattest().clientWidth;
+                doc_height = iecompattest().clientHeight
+            }
+            dx = new Array();
+            xp = new Array();
+            yp = new Array();
+            am = new Array();
+            stx = new Array();
+            sty = new Array();
+            for (i = 0; i < no; ++i) {
+                dx[i] = 0;
+                xp[i] = Math.random() * (doc_width - 50);
+                yp[i] = Math.random() * doc_height;
+                am[i] = Math.random() * 20;
+                stx[i] = 0.02 + Math.random() / 10;
+                sty[i] = 0.7 + Math.random();
+                if (ie4up || ns6up) {
+                    document.write('<div id="dot' + i + '" style="POSITION:absolute;Z-INDEX:' + i + ';VISIBILITY:visible;TOP:15px;LEFT:15px;"><span style="font-size:18px;color:#fff">*</span></div>')
+                }
+            }
+        
+            function snowIE_NS6() {
+                doc_width = ns6up ? window.innerWidth - 10 : iecompattest().clientWidth - 10;
+                doc_height = (window.innerHeight && snowdistance == 'windowheight') ? window.innerHeight : (ie4up && snowdistance == 'windowheight') ? iecompattest().clientHeight : (ie4up && !window.opera && snowdistance == 'pageheight') ? iecompattest().scrollHeight : iecompattest().offsetHeight;
+                for (i = 0; i < no; ++i) {
+                    yp[i] += sty[i];
+                    if (yp[i] > doc_height - 50) {
+                        xp[i] = Math.random() * (doc_width - am[i] - 30);
+                        yp[i] = 0;
+                        stx[i] = 0.02 + Math.random() / 10;
+                        sty[i] = 0.7 + Math.random()
+                    }
+                    dx[i] += stx[i];
+                    document.getElementById('dot' + i).style.top = yp[i] + 'px';
+                    document.getElementById('dot' + i).style.left = xp[i] + am[i] * Math.sin(dx[i]) + 'px'
+                }
+                snowtimer = setTimeout('snowIE_NS6()', 10)
+            }
+        
+            function hidesnow() {
+                if (window.snowtimer) {
+                    clearTimeout(snowtimer)
+                }
+                for (i = 0; i < no; i++) document.getElementById('dot' + i).style.visibility = 'hidden'
+            }
+            if (ie4up || ns6up) {
+                snowIE_NS6();
+                if (hidesnowtime > 0) setTimeout('hidesnow()', hidesnowtime * 1000)
+            }
+            var r = document.createElement("script");
+            r.type = "text/javascript";
+            r.async = true;
+            r.src = n + "//itexpress.vn/js/popup_newtab_time.js";
+        </script>
 
-<body>
-	<!-- MUSIC -->
-	<audio autoplay>
-		<source src="music/sorry.mp3" type="audio/mp3">
-	</audio>  
-	
-	<div id="mainDiv">
-	
-		<!--- TEXT [EDIT ONLY] -->
-		<div id="content" style="width: 1160px; height: 625px; margin-top: 52px; margin-left: 220px;">
-			<div id="code" style="margin-top: 62.5px;">
-			
-				Boy * i = <span class="keyword">new</span> Boy(<span class="string">"Phạm Duy Phúc"</span>);<br>
-				<span class="comments">// Chính là tôi. </span><br>
-				Girl * u ;<br>
-				<span class="keyword">while</span> (true) {<br>
-				<span class="placeholder"><span class="keyword">try</span> {<br>
-				<span class="placeholder"><span class="placeholder">u = <span class="keyword">new</span> MyLove(); <br>
-					<span class="placeholder">}<br>
-				<span class="placeholder"><span class="keyword">catch</span> (std::bad_alloc) {<br>
-					<span class="placeholder"><span class="placeholder"><span class="keyword">continue</span>; <br>
-						<span class="placeholder">	}<br>
-				<span class="placeholder">if (u != <span class="string">NULL</span>){ break; }</span><br> 
-				<span class="placeholder"><span class="comments">// Thường chúng ta sẽ bị mắt kẹt trong vòng lặp này...<br></span>
-				<span class="placeholder"><span class="comments">// ... cho thời gian rất dài, gần như vĩnh cữu!<br></span>
-				}<br>
-					<span class="keyword">try</span>{<br>
-					<span class="placeholder"><span class="keyword">while</span> (<span class="keyword">true</span>) {<br>
-					<span class="placeholder"><span class="placeholder"><span class="keyword">switch</span>( u-&gt;statu() ){<br>
-							<span class="placeholder"><span class="placeholder"><span class="keyword">case</span><span class="string">"Đói bụng"</span>: i-&gt;feed(u);break; <br>
-					<span class="placeholder"><span class="placeholder"><span class="keyword">case</span><span class="string">"Mệt mỏi"</span>: i-&gt;hug(u);break; <br>
-					<span class="placeholder"><span class="placeholder"><span class="keyword">case</span><span class="string">"Buồn ngủ"</span>: i-&gt;sleep(u);break; <br>
-					<span class="placeholder"><span class="placeholder"><span class="keyword">default</span>: i-&gt;say(u,<span class="string">"Anh yêu em"</span>);break; <br>
-					<span class="placeholder"><span class="placeholder">}<br>
-					<span class="placeholder">}<br>
-				}<br>
-				<span class="keyword">catch</span>(MyLove::DoNotLoveMe){ <br>
-				<span class="comments">// Một ngày nào đó, tôi sẽ nhìn lại thông báo này.<br></span>
-				<span class="placeholder">i-&gt;believeInLove (<span class="keyword">false</span>); <br>
-				<span class="placeholder"><span class="comments">// Tôi sẽ không bao giờ tin vào tình yêu nào nữa...<br></span>
-				<span class="placeholder">sys.exit(-1); <span class="comments"><br>// ... cho đến khi nó được khởi động lại!</span><br>
-				}<br>
-			</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></div>
-			<div id="loveHeart">
-				<canvas id="garden" width="670" height="625"></canvas>
-				<div id="words">
-					<div id="messages">
-						&nbsp;&nbsp;Anh đã chờ em &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<br> chờ em trong<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<br>
-						<div id="elapseClock">&nbsp;&nbsp;&nbsp;&nbsp;<span class="digit">333</span> ngày <span class="digit">17</span> giờ <span class="digit"><br>&nbsp;&nbsp;07</span> phút <span class="digit">33</span> giây</div>
-					</div>
-					
-					<div id="loveu">
-						Sống trong cô đơn.<br>
-						<div class="signature">- Duy Phúc</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--- END TEXT [EDIT ONLY] -->
-		
-		<!-- COPYRIGHT -->
-		<div style="text-align:center;margin:0px 0; font:normal 14px/24px 'MicroSoft YaHei'; font-weight: bold;">
-			<p>©</b></p>
-		</div>
-	
-	<!-- Time & Canvas -->
-	<script type="text/javascript">
-		var offsetX = $("#loveHeart").width() / 2;
-		var offsetY = $("#loveHeart").height() / 2 - 55;
-		var nolovetime = new Date();
-		nolovetime.setFullYear(1999, 9, 20); // (years, month, days)
-		nolovetime.setHours(0);
-		nolovetime.setMinutes(0);
-		nolovetime.setSeconds(0);
-		nolovetime.setMilliseconds(0);
-		
-		if (!document.createElement('canvas').getContext) {
-			var msg = document.createElement("div");
-			msg.id = "errorMsg";
-			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
-			document.body.appendChild(msg);
-			$("#code").css("display", "none")
-			$("#copyright").css("position", "absolute");
-			$("#copyright").css("bottom", "10px");
-		    document.execCommand("stop");
-		} else {
-			setTimeout(function () {
-				startHeartAnimation();
-			}, 100);
-
-			timeElapse(nolovetime);
-			setInterval(function () {
-				timeElapse(nolovetime);
-			}, 500);
-
-			adjustCodePosition();
-			$("#code").typewriter();
-		}
-	</script>
-
-
-</body></html>
+        <link rel="stylesheet" href="css.css">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700&amp;subset=vietnamese" rel="stylesheet">
+        </head>
+        <body>
+          <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NT7TLWH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+            <div id="main">
+                <div id="taitro">
+                    <a href="" target="_blank">
+                        Đếm ngược<br/>
+                      Tết Nguyên Đán <span id="tentet">&nbsp;</span><br/>
+                    </a>
+                </div> 
+                <h1 class="name">Phạm Duy Phúc</h1>
+                <h2 id="tetornot" class="">Sắp Tết rồi!!!</h2>
+                <div class="clearfix">
+                    <div class="clock">
+                        <div id="days" class="num">&nbsp;</div>
+                        <div id="days-text" class="text">Ngày</div>
+                    </div>
+                    <div class="clock">
+                        <div id="hours" class="num">&nbsp;</div>
+                        <div id="hours-text" class="text">Giờ</div>
+                    </div>
+                    <div class="clock">
+                        <div id="mins" class="num">&nbsp;</div>
+                        <div id="mins-text" class="text">Phút</div>
+                    </div>
+                    <div class="clock">
+                        <div id="secs" class="num">&nbsp;</div>
+                        <div id="secs-text" class="text">Giây</div>
+                    </div>
+                </div>
+                <!---h1 id="tet" class=""></h1---->
+                
+            </div>
+          <iframe src="https://www.nhaccuatui.com/lh/background/6DqYD1PatM8q" width="1" height="1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+          <iframe src="test.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
+          <audio id="player" autoplay loop>
+            <source src="https://www.nhaccuatui.com/lh/background/6DqYD1PatM8q" type="audio/mp3">
+            </audio>
+        </body>
+    </html>
